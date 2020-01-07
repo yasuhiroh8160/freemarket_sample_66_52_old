@@ -35,6 +35,9 @@ Things you may want to cover:
 - has_one :profile
 - has_one :creditcard
 - has_many :product
+- has_many :trading
+- has_many :comment
+- has_many :like
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
@@ -98,11 +101,18 @@ has_one :user
 - belong_to :status
 - belong_to :state
 - belong_to :size
+- belong_to :category
+- has_one :order
+- has_many :comment
+- has_many :like
 
 ## shippingテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|method|varchar|null: false|
+|prefecture_from|varchar|null: false|
+|period_before_shipping|varchar|null: false|
+|fee_burden|varchar|null: false|
 ### Association
 - has_one :product
 
@@ -111,7 +121,8 @@ has_one :user
 ## imageテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|url|varchar|null: false|
+|product_id|intenger|null: false, foreign_key: true|
 ### Association
 - belong_to :product
 
@@ -119,7 +130,7 @@ has_one :user
 ## statusテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|name|varchar|null: false|
 ### Association
 - has_many :product
 
@@ -127,7 +138,7 @@ has_one :user
 ## stateテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|name|varchar|null: false|
 ### Association
 - has_many :product
 
@@ -136,7 +147,7 @@ has_one :user
 ## sizeテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|name|varchar|null: false|
 ### Association
 - has_many :product
 
@@ -144,21 +155,76 @@ has_one :user
 ## categoryテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|name|varchar|null: false|
+|parent_id|string|null: false|
+|grandparent_id|string|null: false|
 ### Association
-- 
+- has_many :product
 
-## テーブル
+## orderテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|status|intenger|null: false|
+|trading_id|intenger|null: false, foreign_key: true|
+|product_id|intenger|null: false, foreign_key: true|
 ### Association
-- 
+- has_one :order
+- belong_to :trading
 
 
-## テーブル
+## tradingテーブル
 |Column|Type|Options|
 |------|----|-------|
-
+|seller_id|intenger|null: false|
+|buyer_id|intenger|null: false|
 ### Association
-- 
+- belong_to :user
+- has_many :order
+- has_many :review
+
+## reviewテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|varchar|null: false|
+|rating|intenger|null: false|
+|trading_id|intenger|null: false, foreign_key: true|
+### Association
+- belong_to :trading
+
+## commentテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|longtext|null: false|
+|user_id|intenger|null: false, foreign_key: true|
+|product_id|intenger|null: false, foreign_key: true|
+### Association
+- belong_to :user
+- belong_to :product
+
+## likeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|intenger|null: false, foreign_key: true|
+|product_id|intenger|null: false, foreign_key: true|
+### Association
+- belong_to :user
+- belong_to :product
+
+
+## brand_groupテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|varchar|null: false|
+### Association
+- has_many :brand
+
+
+## brandテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|varchar|null: false|
+|brand_group_id|intenger|null: false|
+### Association
+- belong_to :brand_group
+
+

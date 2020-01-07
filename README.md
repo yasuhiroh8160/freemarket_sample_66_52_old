@@ -226,5 +226,3 @@ has_one :user
 |brand_group_id|intenger|null: false|
 ### Association
 - belong_to :brand_group
-
-

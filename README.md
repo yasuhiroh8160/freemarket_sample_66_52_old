@@ -45,7 +45,7 @@ Things you may want to cover:
 |token|longtext|null: false|
 |uid|varchar|null: false|
 |provider|varchar|null: false|
-|user_id|intenger|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
 
@@ -67,7 +67,7 @@ Things you may want to cover:
 |city|varchar|null: false|
 |district|varchar|null: false|
 |building|varchar|null: false|
-|user_id|intenger|null: false, forein_key: true|
+|user_id|integer|null: false, forein_key: true|
 ### Association
 - belong_to :user
 
@@ -75,7 +75,7 @@ Things you may want to cover:
 ## creditcardテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|intenger|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 |token|longtext|null:false|
 ### Association
 - belong_to :user
@@ -88,12 +88,12 @@ Things you may want to cover:
 |price|varchar|null: false|
 |description|varchar|null: false|
 |brand|varchar|null: false|
-|shipping_id|intenger|null: false, foreign_key: true|
-|category_id|intenger|null: false, foreign_key: true|
-|size_id|intenger|null: false, foreign_key: true|
-|state_id|intenger|null: false, foreign_key: true|
-|status_id|intenger|null: false, foreign_key: true|
-|user_id|intenger|null: false, foreign_key: true|
+|shipping_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+|size_id|integer|null: false, foreign_key: true|
+|state_id|integer|null: false, foreign_key: true|
+|status_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
 - has_one :shipping
@@ -122,7 +122,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |url|varchar|null: false|
-|product_id|intenger|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :product
 
@@ -164,9 +164,9 @@ Things you may want to cover:
 ## orderテーブル
 |Column|Type|Options|
 |------|----|-------|
-|status|intenger|null: false|
-|trading_id|intenger|null: false, foreign_key: true|
-|product_id|intenger|null: false, foreign_key: true|
+|status|integer|null: false|
+|trading_id|integer|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
 ### Association
 - has_one :order
 - belong_to :trading
@@ -175,8 +175,8 @@ Things you may want to cover:
 ## tradingテーブル
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|intenger|null: false|
-|buyer_id|intenger|null: false|
+|seller_id|integer|null: false|
+|buyer_id|integer|null: false|
 ### Association
 - belong_to :user
 - has_many :orders, dependent: :destroy
@@ -186,8 +186,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |body|varchar|null: false|
-|rating|intenger|null: false|
-|trading_id|intenger|null: false, foreign_key: true|
+|rating|integer|null: false|
+|trading_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :trading
 
@@ -195,8 +195,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |body|longtext|null: false|
-|user_id|intenger|null: false, foreign_key: true|
-|product_id|intenger|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
 - belong_to :product
@@ -204,8 +204,8 @@ Things you may want to cover:
 ## likeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|intenger|null: false, foreign_key: true|
-|product_id|intenger|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
 - belong_to :product
@@ -223,6 +223,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|varchar|null: false|
-|brand_group_id|intenger|null: false|
+|brand_group_id|integer|null: false|
 ### Association
 - belong_to :brand_group

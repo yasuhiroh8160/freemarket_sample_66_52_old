@@ -226,5 +226,3 @@ Things you may want to cover:
 |brand_group_id|intenger|null: false|
 ### Association
 - belong_to :brand_group
-
-

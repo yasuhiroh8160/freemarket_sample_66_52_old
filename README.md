@@ -130,7 +130,7 @@ Things you may want to cover:
 ## statusテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|varchar|null: false|
+|name|enum|null: false|
 ### Association
 - has_many :products, dependent: :destroy
 
@@ -138,7 +138,7 @@ Things you may want to cover:
 ## stateテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|varchar|null: false|
+|name|enum|null: false|
 ### Association
 - has_many :products, dependent: :destroy
 
@@ -147,7 +147,7 @@ Things you may want to cover:
 ## sizeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|varchar|null: false|
+|name|enum|null: false|
 ### Association
 - has_many :products, dependent: :destroy
 

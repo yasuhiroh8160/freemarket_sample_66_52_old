@@ -124,7 +124,7 @@ Things you may want to cover:
 |url|varchar|null: false|
 |product_id|intenger|null: false, foreign_key: true|
 ### Association
-- belong_to :products
+- belong_to :product
 
 
 ## statusテーブル

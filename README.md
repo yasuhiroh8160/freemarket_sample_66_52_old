@@ -31,13 +31,13 @@ Things you may want to cover:
 |email|varchar|null: false|
 |password|varchar|null: false|
 ### Association
-- has_many :sns_credentials
+- has_many :sns_credentials, dependent: :destroy
 - has_one :profile
 - has_one :creditcard
-- has_many :product
-- has_many :trading
-- has_many :comment
-- has_many :like
+- has_many :products, dependent: :destroy
+- has_many :tradings, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
@@ -53,7 +53,7 @@ Things you may want to cover:
 ## profileテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|mediumtext|null: false|
+|body|text|null: false|
 |last_name|varchar|null: false|
 |first_name|varchar|null: false|
 |last_name_kana|varchar|null: false|
@@ -69,7 +69,7 @@ Things you may want to cover:
 |building|varchar|null: false|
 |user_id|intenger|null: false, forein_key: true|
 ### Association
-- has_one :user
+- belong_to :user
 
 
 ## creditcardテーブル
@@ -78,7 +78,7 @@ Things you may want to cover:
 |user_id|intenger|null: false, foreign_key: true|
 |token|longtext|null:false|
 ### Association
-has_one :user
+- belong_to :user
 
 
 ## productテーブル
@@ -97,14 +97,14 @@ has_one :user
 ### Association
 - belong_to :user
 - has_one :shipping
-- has_many :image
+- has_many :images, dependent: :destroy
 - belong_to :status
 - belong_to :state
 - belong_to :size
 - belong_to :category
 - has_one :order
-- has_many :comment
-- has_many :like
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 
 ## shippingテーブル
 |Column|Type|Options|
@@ -114,7 +114,7 @@ has_one :user
 |period_before_shipping|varchar|null: false|
 |fee_burden|varchar|null: false|
 ### Association
-- has_one :product
+- belong_to :product
 
 
 
@@ -124,7 +124,7 @@ has_one :user
 |url|varchar|null: false|
 |product_id|intenger|null: false, foreign_key: true|
 ### Association
-- belong_to :product
+- belong_to :products
 
 
 ## statusテーブル
@@ -132,7 +132,7 @@ has_one :user
 |------|----|-------|
 |name|varchar|null: false|
 ### Association
-- has_many :product
+- has_many :products, dependent: :destroy
 
 
 ## stateテーブル
@@ -140,7 +140,7 @@ has_one :user
 |------|----|-------|
 |name|varchar|null: false|
 ### Association
-- has_many :product
+- has_many :products, dependent: :destroy
 
 
 
@@ -149,7 +149,7 @@ has_one :user
 |------|----|-------|
 |name|varchar|null: false|
 ### Association
-- has_many :product
+- has_many :products, dependent: :destroy
 
 
 ## categoryテーブル
@@ -159,7 +159,7 @@ has_one :user
 |parent_id|string|null: false|
 |grandparent_id|string|null: false|
 ### Association
-- has_many :product
+- has_many :products, dependent: :destroy
 
 ## orderテーブル
 |Column|Type|Options|
@@ -179,8 +179,8 @@ has_one :user
 |buyer_id|intenger|null: false|
 ### Association
 - belong_to :user
-- has_many :order
-- has_many :review
+- has_many :orders, dependent: :destroy
+- has_many :reviews, dependent: :destroy
 
 ## reviewテーブル
 |Column|Type|Options|
@@ -216,7 +216,7 @@ has_one :user
 |------|----|-------|
 |name|varchar|null: false|
 ### Association
-- has_many :brand
+- has_many :brands, dependent: :destroy
 
 
 ## brandテーブル
